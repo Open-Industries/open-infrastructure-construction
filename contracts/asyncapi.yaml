@@ -1,0 +1,22 @@
+asyncapi: 3.0.0
+info:
+  title: Open Infrastructure & Construction Reference Events
+  version: 0.1.0
+channels:
+  domainEvents:
+    address: open-infrastructure-construction.domain-events.v1
+    messages:
+      domainEvent:
+        $ref: '#/components/messages/DomainEvent'
+operations:
+  receiveDomainEvent:
+    action: receive
+    channel:
+      $ref: '#/channels/domainEvents'
+components:
+  messages:
+    DomainEvent:
+      name: InfrastructureAssetUpdated
+      contentType: application/cloudevents+json
+      payload:
+        $ref: './cloudevents/domain-event.schema.json'
